@@ -9,12 +9,12 @@ jQuery(function($) {
     var red3 = document.getElementById('red3');
 
     setTimeout(() => {
-        red1.style.fontSize = "xx-large";
+        red1.style.fontSize = "x-large";
         red1.style.fontWeight = "bolder";
         medalja1.innerHTML = '🥇';
     }, 1000);
     setTimeout(() => {
-        red2.style.fontSize = "x-large";
+        red2.style.fontSize = "large";
         red2.style.fontWeight = "bold";
         medalja2.innerHTML = '🥈';
     }, 2000);

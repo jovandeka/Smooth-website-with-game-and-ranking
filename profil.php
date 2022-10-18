@@ -2,11 +2,11 @@
  session_start(); 
 ?>
 <!DOCTYPE html>
-<html lang="en" style="cursor: crosshair;">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Studio | Igrica</title>
+    <title>Creative Studio | Profil</title>
 
     <link rel="shortcut icon" href="./assets/cslogo.png" type="image/x-icon">
     <link rel="icon" href="./assets/cslogo.png" type="image/x-icon">
@@ -17,7 +17,7 @@
     <script src="https://kit.fontawesome.com/49ff4a7b2e.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="./script.js"></script>
-    <script src="./fora.js"></script>
+    <script src="./vrtiLogo.js"></script>
 </head>
 <body class="index-bg">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top p-1 pl-2 pr-2" id="scrollnav">
@@ -44,7 +44,7 @@
                     $loggenOnUser = $_SESSION["korisnicko_ime"];
                     echo '
                         <li class="nav-item dropdown">
-                            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action text-decoration-none"><span class=" mr-2" ><span style="color:lime;">●</span>&nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;&nbsp;'.$loggenOnUser.' </span></a>
+                            <a href="#" data-toggle="dropdown" class="nav-link active dropdown-toggle user-action text-decoration-none"><span class=" mr-2" ><span style="color:lime;">●</span>&nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;&nbsp;'.$loggenOnUser.' </span></a>
                             <ul class="dropdown-menu bg-dark dropdown_menu-animate">
                                 <li class="dropdown_item"><a href="./profil.php"><i class="fa fa-user-o"></i> Profil</a></li>
                                 <li class="dropdown_item"><a href="#"><i class="fa fa-shopping-cart"></i> Narudžbine</a></li>
@@ -59,8 +59,8 @@
                             </li>";
                 }
             ?>
-            <li class="nav-item active">
-                <a class="nav-link active" href="./igrica.php">Igrica</a>
+            <li class="nav-item">
+                <a class="nav-link" href="./igrica.php">Igrica</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="./rezultati.php">Tabela</a>
@@ -68,82 +68,65 @@
         </ul>
     </div>
     </nav>
-    <div id="tajmer">00:00:00</div>
-    <div id="IgraBrojac">Broj uhvacenih:</div>
-    <div id="IgraText">Uhvati me ako možeš &#128540;</div>
     <div>
-        <img src="./assets/dead.png" id="uhvacen">
-        <img src="./assets/slice.gif" id="slice">
-        <img src="./assets/blood.gif" id="blood">
-        <img src="./assets/cslogo.jpg" id="sugaIgra">
-    </div>
-
-    <?php
-        if (isset($_SESSION["korisnicko_ime"])) {
+    <div>
+    <a href="./igrica.php">
+        <img src="./assets/cslogo.jpg" id="suga" title="Play the game?">
+    </a>
+    <div class="d-flex justify-content-center align-items-center" id="nickname">
+        <?php
             $loggenOnUser = $_SESSION["korisnicko_ime"];
             echo '
-                <section class="container-fluid" id="upis">
-                    <div class="row justify-content-end">
-                        <div class="col-sm-6 col-md-3 col-12">
-                        <form class="upis-form-container" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" method="post">
-                        <h3 class="text-center pb-3 text-nowrap font-weight-bold" >Rangiraj svoje vreme</h3>
-                            <div class="form-group text-center">
-                                <label for="vreme">Ostvareno vreme u sekundama:</label>
-                                <input type="text" class="form-control bg-success text-center font-weight-bold text-white" id="vreme" name="txtVreme" readonly>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block" name="UpisBtn">Upiši u tabelu</button>
-                            </form>
+            <h2 data-text='.$loggenOnUser.'>'.$loggenOnUser.'</h2>
+            ' ?>
+            <button type="button" class="btn btn-light" id="editDugme" data-toggle="modal" data-target="#exampleModal" title="Promeni korisničko ime ili lozinku"><i class="far">&#xf044;</i></button>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width: 595px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Promeni korisničko ime ili lozinku</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body container">
+                    <form class="form-inline" action="updateProcess.php" method="post">
+                    <div class="d-flex p-3 mb-2">
+                        <div class="col-md">
+                            <label style="width:150px; text-align: left;" for="nickNovi">Novo korisničko ime:</label>
                         </div>
-                    </div>
-                </section>
-                ';
-        } else {
-            echo '  
-                <section class="container-fluid" id="upis">
-                    <div class="row justify-content-end">
-                        <div class="col-sm-6 col-md-3 col-12">
-                        <form class="upis-form-container" action="./login.php" >
-                            <p class="text-center pb-3 text-nowrap font-weight-bold" >Uloguj se i rangiraj svoje vreme!</p>
-                            <button type="submit" class="btn btn-primary btn-block" name="dugme">OK</button>
-                        </form>
+                        <div class="col-md">
+                            <input type="text" id="nickNovi" class="form-control" placeholder="Nickname" name="nickNovi" maxlength = "12" required>
                         </div>
+                        <div class="col-md">
+                            <button type="submit" class="btn btn-primary" name="updateNick">Ažuriraj</button>
+                        </div> 
                     </div>
-                </section>
-                ';
-        }
-        ?>
-    <?php
-    include "connection.php";
+                    </form>
+                    
+                </div>
+                <div class="modal-footer">
+                <form class="form-inline" action="updateProcess.php" method="post">
+                    <div class="d-flex p-3 mb-2">
+                        <div class="col-md">
+                            <label style="width:150px; text-align: left;" for="lozinkaNova">Nova lozinka:</label>
+                        </div>
+                        <div class="col-md">
+                            <input type="password" class="form-control" id="lozinkaNova" placeholder="*****" name="lozinkaNova" minlength = "5" maxlength = "25" required>
+                        </div>
+                        <div class="col-md">
+                            <button type="submit" class="btn btn-primary" name="updatePass">Ažuriraj</button>
+                        </div> 
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $txtEmail = $_SESSION['email'];
-        $txtNick = $_SESSION['korisnicko_ime'];
-        $txtVreme = $_POST['txtVreme'];
-
-        $sql1="SELECT * FROM korisnik WHERE email = '$txtEmail' AND korisnicko_ime = '$txtNick'";
-
-        $res=mysqli_query($conn,$sql1);
-
-        if (mysqli_num_rows($res) > 0) {
-
-            $row = mysqli_fetch_assoc($res);
-            $id = $row['id_korisnika'];
-
-            if($txtEmail==isset($row['email'])){
-                $sql2 = "INSERT INTO vreme (id_korisnika, fldVreme) VALUES ( '$id', '$txtVreme')";
-                $rs2 = mysqli_query($conn, $sql2);
-                if($rs2){
-                    echo '<script>alert("'.$txtNick.',"+" "+ "vaš rezultat je upisan.")</script>';
-                    echo "<script>document.location = './rezultati.php'</script>";
-                }  
-            }
-        }
-        else{
-            echo '<script>alert("Pogrešan Email ili Lozinka! Da li ste registrovani?")</script>';
-            }
-        }
-    ?>
-
+    </div>
     <div class="footer" id="scrollfoot">
         <?php include("footer.php")?>
     </div>

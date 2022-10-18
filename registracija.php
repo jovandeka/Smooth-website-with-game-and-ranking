@@ -59,22 +59,22 @@
     <section class="container-fluid" id="reg">
         <div class="row justify-content-center">
             <div class="col-sm-6 col-md-3 col-12">
-             <form class="reg-form-container" action="registerProcess.php" method="post">
-             <h3 class="text-center pb-3 text-nowrap font-weight-bold" >Registracija</h3>
-                <div class="form-group">
-                    <label for="nick">Korisničko ime:</label>
-                    <input type="text" class="form-control" id="nick" placeholder="Nickname" name="nick" maxlength = "15" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="*****@gmail.com" name="email" maxlength = "30" required>
-                </div>
-                <div class="form-group">
-                    <label for="lozinka">Lozinka:</label>
-                    <input type="password" class="form-control" id="lozinka" placeholder="*****" name="lozinka" minlength = "5" maxlength = "25" required>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block" name="regBtn">Registruj me</button></br>
-                <p class="text-center">Imaš nalog? &nbsp<b style="background: orange;">&nbsp<a style="color: blue;" href="./login.php"> Uloguj se </a>&nbsp</b></p>
+                <form class="reg-form-container" action="registerProcess.php" method="post">
+                    <h3 class="text-center pb-3 text-nowrap font-weight-bold" >Registracija</h3>
+                    <div class="form-group">
+                        <label for="nick">Korisničko ime:</label>
+                        <input type="text" class="form-control" id="nick" placeholder="Nickname" name="nick" maxlength = "12" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="*****@gmail.com" name="email" maxlength = "30" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lozinka">Lozinka:</label>
+                        <input type="password" class="form-control" id="lozinka" placeholder="*****" name="lozinka" minlength = "5" maxlength = "25" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" name="regBtn">Registruj me</button></br>
+                    <p class="text-center">Imaš nalog? &nbsp<b style="background: orange;">&nbsp<a style="color: blue;" href="./login.php"> Uloguj se </a>&nbsp</b></p>
                 </form>
             </div>
         </div>

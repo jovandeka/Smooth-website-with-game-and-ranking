@@ -5,7 +5,7 @@ USE `db_igrica`;
 CREATE TABLE korisnik (
     id_korisnika INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(50) NOT NULL UNIQUE,
-    korisnicko_ime VARCHAR(50) NOT NULL UNIQUE,
+    korisnicko_ime VARCHAR(12) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL UNIQUE,
     lozinka VARCHAR(50) NOT NULL
 );
 
@@ -28,12 +28,13 @@ DROP TABLE vreme;
 
 SELECT * FROM vreme ORDER BY fldVreme+0 ASC;
 
-INSERT INTO vreme(id_korisnika, fldVreme) VALUES ('1','37');
+INSERT INTO vreme(id_korisnika, fldVreme) VALUES ('4','1');
 INSERT INTO vreme(id_korisnika, fldVreme) VALUES ('1','13');
 INSERT INTO vreme(id_korisnika, fldVreme) VALUES ('2','71');
 INSERT INTO vreme(id_korisnika, fldVreme) VALUES ('2','92');
 
-DELETE FROM vreme WHERE id_korisnika=2;
-DELETE FROM korisnik WHERE id_korisnika=2;
+DELETE FROM vreme WHERE id_korisnika=4;
+DELETE FROM korisnik WHERE id_korisnika=4;
 
 SELECT * FROM korisnik INNER JOIN vreme ON korisnik.id_korisnika = vreme.id_korisnika ORDER BY fldVreme+0 ASC;
+

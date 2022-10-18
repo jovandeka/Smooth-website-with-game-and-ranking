@@ -46,9 +46,9 @@
                         <li class="nav-item dropdown">
                             <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action text-decoration-none"><span class=" mr-2" ><span style="color:lime;">●</span>&nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;&nbsp;'.$loggenOnUser.' </span></a>
                             <ul class="dropdown-menu bg-dark dropdown_menu-animate">
-                                <li class="dropdown_item"><a href="./login.php"><i class="fa fa-user-o"></i> Profile</a></li>
-                                <li class="dropdown_item"><a href="#"><i class="fa fa-calendar-o"></i> Calendar</a></li>
-                                <li class="dropdown_item"><a href="#"><i class="fa fa-sliders"></i> Settings</a></li>
+                                <li class="dropdown_item"><a href="./profil.php"><i class="fa fa-user-o"></i> Profil</a></li>
+                                <li class="dropdown_item"><a href="#"><i class="fa fa-shopping-cart"></i> Narudžbine</a></li>
+                                <li class="dropdown_item"><a href="#"><i class="fa fa-sliders"></i> Podešavanja</a></li>
                                 <li class="dropdown_item"><a href="logout.php"><i class="fa fa-sign-out"></i> Logout</a></li>
                             </ul>
                         </li>
